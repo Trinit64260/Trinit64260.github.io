@@ -1,0 +1,16 @@
+name: Build and Run Guessing Game
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: gcc guessing_game.c -o guessing_game
+
+    - name: Run
+      run: ./guessing_game
