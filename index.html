@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>From hogwarts,with porcupine</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        <style>
+    .header-text h1 span {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 4px solid;
+        width: 0;
+    }
+</style>
+
+    </style>
+    
+ 
+ 
     <script src="https://kit.fontawesome.com/c975878c5b.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -33,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="about-col-1">
-                    <img src="1687415366768.jpg" alt="">
+                    <img src="F:\portfolio\1687415366768.jpg" alt="">
                 </div>
                 <div class="about-col-2">
                     <h1 class="sub-title">About me</h1>
@@ -207,5 +222,37 @@
             .catch(error => console.error('Error!', error.message))
         })
       </script>
+      <script>
+        const headerText = document.querySelector(".header-text h1");
+        const textToType = ["", "Your Friend!","a potion master","And a friend of humanity!"];
+        let currentTextIndex = 0;
+        let currentCharIndex = 0;
+    
+        function typeText() {
+            if (currentCharIndex < textToType[currentTextIndex].length) {
+                headerText.innerHTML += textToType[currentTextIndex].charAt(currentCharIndex);
+                currentCharIndex++;
+                setTimeout(typeText, 100);
+            } else {
+                setTimeout(eraseText, 1000);
+            }
+        }
+    
+        function eraseText() {
+            if (currentCharIndex >= 0) {
+                const text = textToType[currentTextIndex].substring(0, currentCharIndex);
+                headerText.innerHTML = text;
+                currentCharIndex--;
+                setTimeout(eraseText, 50);
+            } else {
+                currentTextIndex = (currentTextIndex + 1) % textToType.length;
+                currentCharIndex = 0;
+                setTimeout(typeText, 1000);
+            }
+        }
+    
+        typeText();
+    </script>
+    
 </body>
 </html>
